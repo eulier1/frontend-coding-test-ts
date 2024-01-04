@@ -10,27 +10,34 @@ const BASE_URL = 'https://pokeapi.co/api/v2/'
 export const usePokemonStore = defineStore('pokemon', () => {
   const pokemons: Ref<PokemonList[] | []> = ref([])
   const currentPokemon: Ref<Pokemon | null> = ref(null)
+  const loading: Ref<Enum<{ success; error; loading }>> = ref('loading')
 
   const fetchAllPokemons = async () => {
     const route = `${BASE_URL}pokemon/`
+    loading.value = 'loading'
     try {
       const pokemonsData: AxiosResponse<RESTfulList> = await axios.get(route)
       pokemons.value = pokemonsData.data.results
+      loading.value = 'success'
     } catch (e) {
       const error = new AxiosError(e)
       console.error(error)
+      loading.value = 'error'
       throw new Error(error)
     }
   }
 
   const fetchPokemon = async (id) => {
     const route = `${BASE_URL}pokemon/${id}`
+    loading.value = 'loading'
     try {
       const pokemonsData: AxiosResponse<Pokemon> = await axios.get(route)
       currentPokemon.value = pokemonsData.data
+      loading.value = 'success'
     } catch (e) {
       const error = new AxiosError(e)
       console.error(error)
+      loading.value = 'error'
       throw new Error(error)
     }
   }
@@ -38,6 +45,7 @@ export const usePokemonStore = defineStore('pokemon', () => {
   return {
     pokemons,
     currentPokemon,
+    loading,
     fetchAllPokemons,
     fetchPokemon,
   }
