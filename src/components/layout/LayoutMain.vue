@@ -30,6 +30,14 @@
     </div>
   </nav>
   <main class="flex justify-center">
-    <router-view />
+    <router-view v-slot="{ Component, route }">
+      <transition
+        v-bind:name="route.meta.transition || 'fade'"
+        appear
+        mode="out-in"
+      >
+        <component v-bind:is="Component" />
+      </transition>
+    </router-view>
   </main>
 </template>
