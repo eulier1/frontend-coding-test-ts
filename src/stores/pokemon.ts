@@ -19,6 +19,7 @@ export const usePokemonStore = defineStore('pokemon', () => {
     } catch (e) {
       const error = new AxiosError(e)
       console.error(error)
+      throw new Error(error)
     }
   }
 
@@ -30,6 +31,7 @@ export const usePokemonStore = defineStore('pokemon', () => {
     } catch (e) {
       const error = new AxiosError(e)
       console.error(error)
+      throw new Error(error)
     }
   }
 
