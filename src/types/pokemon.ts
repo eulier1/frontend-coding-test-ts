@@ -35,12 +35,14 @@ export interface Pokemon {
   }
 }
 
+export interface PokemonList {
+  name: string
+  url: string
+}
+
 export interface RESTfulList {
   count: number
   next: string | null
   previous: string | null
-  results: Array<{
-    name: string
-    url: string
-  }>
+  results: Array<PokemonList>
 }

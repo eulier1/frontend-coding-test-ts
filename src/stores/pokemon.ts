@@ -2,18 +2,13 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 import axios, { AxiosError, AxiosResponse } from 'axios'
-import { RESTfulList } from '../types/pokemon'
+import { PokemonList, RESTfulList } from '../types/pokemon'
 
 const BASE_URL = 'https://pokeapi.co/api/v2/'
 
 // eslint-disable-next-line import/prefer-default-export
 export const usePokemonStore = defineStore('pokemon', () => {
-  const pokemons: Ref<
-    {
-      name: string
-      url: string
-    }[]
-  > = ref([])
+  const pokemons: Ref<PokemonList[] | []> = ref([])
 
   const fetchAllPokemons = async () => {
     const route = `${BASE_URL}pokemon/`
