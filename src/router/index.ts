@@ -9,6 +9,7 @@ import LayoutMain from '../components/layout/LayoutMain.vue'
 import Error from '../views/Error.vue'
 import Home from '../views/Home.vue'
 import Pokemon from '../views/Pokemon.vue'
+import PokemonDetail from '../views/PokemonDetail.vue'
 
 const mainRoutes: RouteRecordRaw[] = [
   {
@@ -21,8 +22,14 @@ const mainRoutes: RouteRecordRaw[] = [
   {
     path: '/pokemons',
     name: 'Pokemons',
-    props: true,
     component: Pokemon,
+    meta: { transition: 'slide-fade' },
+  },
+  {
+    path: '/pokemons/:id',
+    name: 'PokemonDetail',
+    props: true,
+    component: PokemonDetail,
     meta: { transition: 'slide-fade' },
   },
 ]

@@ -5,15 +5,17 @@
       :key="`pokemon-${index}`"
       class="gap-x-6 py-5"
     >
-      <div
-        class="rounded-2xl bg-gray-50 p-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16"
-      >
-        <div class="min-w-0 flex-auto">
-          <p class="text-sm font-semibold leading-6 text-gray-900">
-            {{ pokemon.name }}
-          </p>
+      <router-link v-bind:to="`/pokemons/${index + 1}`">
+        <div
+          class="rounded-2xl shadow-md p-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16 hover:shadow-xl"
+        >
+          <div class="min-w-0 flex-auto">
+            <p class="text-sm font-semibold leading-6 text-gray-900">
+              {{ pokemon.name }}
+            </p>
+          </div>
         </div>
-      </div>
+      </router-link>
     </li>
   </ul>
 </template>
