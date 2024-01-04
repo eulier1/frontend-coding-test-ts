@@ -40,6 +40,17 @@
           <component v-bind:is="Component" />
         </transition>
       </router-view>
+      <ToastComponent />
     </main>
   </div>
 </template>
+
+<script setup>
+import { provide } from 'vue'
+import useToast from '../../composable/toast'
+import ToastComponent from '../notifications/ToastComponent.vue'
+
+const toast = useToast()
+
+provide('toast', toast)
+</script>
