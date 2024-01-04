@@ -39,5 +39,8 @@ export interface RESTfulList {
   count: number
   next: string | null
   previous: string | null
-  results: Pokemon[]
+  results: Array<{
+    name: string
+    url: string
+  }>
 }
