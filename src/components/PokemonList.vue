@@ -21,15 +21,23 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, inject } from 'vue'
 import { storeToRefs } from 'pinia'
 import { usePokemonStore } from '../stores/pokemon'
+
+const toast = inject('toast')
 
 const { pokemons } = storeToRefs(usePokemonStore())
 const pokemonStore = usePokemonStore()
 
-onMounted(() => {
-  pokemonStore.fetchAllPokemons()
+onMounted(async () => {
+  try {
+    await pokemonStore.fetchAllPokemons()
+    toast.addToast('Pokemons fetched', 'success')
+  } catch (error) {
+    console.log(error)
+    toast.addToast('Error fetching Pokemons', 'error')
+  }
 })
 
 const capitlizeNamePokemons = computed(() => {
