@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="loading === 'success'" class="bg-white">
+    <div v-if="loading === 'success' && currentPokemon" class="bg-white">
       <div class="pt-6">
         <nav aria-label="Breadcrumb">
           <ol
