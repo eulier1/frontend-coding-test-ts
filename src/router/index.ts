@@ -34,7 +34,7 @@ const mainRoutes: RouteRecordRaw[] = [
   },
 ]
 
-const routes: RouteRecordRaw[] = [
+export const routes: RouteRecordRaw[] = [
   {
     path: '/error',
     alias: '/:pathMatch(.*)*',

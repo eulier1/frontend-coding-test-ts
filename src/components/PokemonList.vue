@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="loading === 'success'">
+    <div v-if="loading === 'success'" data-test="list">
       <ul
         role="list"
         class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-4"
@@ -24,8 +24,8 @@
         </li>
       </ul>
     </div>
-    <div v-if="loading === 'loading'">Loading</div>
-    <div v-if="loading === 'error'">
+    <div v-if="loading === 'loading'" data-test="loading">Loading</div>
+    <div v-if="loading === 'error'" data-test="error">
       <ErrorView></ErrorView>
     </div>
   </div>
